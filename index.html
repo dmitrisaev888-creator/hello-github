@@ -3,13 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Исаев Дмитрий</title>
+  <title>Исаев Дмитрий — ИИ-агенты и автоматизация бизнеса | AI-Isaev</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Исаев Дмитрий (AI-Isaev) — внедряю ИИ-агентов, чат-ботов и автоматизирую бизнес-процессы. Экономлю бизнесу десятки часов рутины в неделю. Обсудим проект?">
+  <meta name="author" content="Исаев Дмитрий">
+  <link rel="canonical" href="https://dmitrisaev888-creator.github.io/hello-github/">
+
+  <!-- Open Graph (превью при шеринге в Telegram / WhatsApp / соцсетях) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Исаев Дмитрий — ИИ-агенты и автоматизация бизнеса">
+  <meta property="og:description" content="Внедряю ИИ-агентов и автоматизирую процессы. Экономлю бизнесу десятки часов рутины в неделю.">
+  <meta property="og:url" content="https://dmitrisaev888-creator.github.io/hello-github/">
+  <meta property="og:image" content="https://dmitrisaev888-creator.github.io/hello-github/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (встроенный SVG, отдельный файл не нужен) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='24'%20fill='%237c6cff'/%3E%3Ctext%20x='50'%20y='66'%20font-size='42'%20font-family='Arial,sans-serif'%20font-weight='bold'%20text-anchor='middle'%20fill='white'%3EAI%3C/text%3E%3C/svg%3E">
+
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg-1: #0f0c29;
       --bg-2: #302b63;
@@ -21,11 +37,10 @@
       --btn-bg: rgba(255, 255, 255, 0.08);
       --btn-hover: rgba(255, 255, 255, 0.14);
       --accent: #7c6cff;
+      --accent-2: #58a6ff;
       --shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
     }
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       color: var(--text);
@@ -47,11 +62,7 @@
         radial-gradient(circle at 80% 80%, rgba(88, 166, 255, 0.12), transparent 45%);
       pointer-events: none;
     }
-    .page {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-    }
+    .page { position: relative; width: 100%; max-width: 460px; }
     .card {
       background: var(--card);
       border: 1px solid var(--card-border);
@@ -62,13 +73,22 @@
       -webkit-backdrop-filter: blur(16px);
       text-align: center;
     }
+    .brand {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
     .avatar-wrap {
       width: 120px;
       height: 120px;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
       border-radius: 50%;
       padding: 4px;
-      background: linear-gradient(135deg, var(--accent), #58a6ff);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 8px 32px rgba(124, 108, 255, 0.35);
     }
     .avatar {
@@ -83,19 +103,103 @@
       font-size: clamp(1.5rem, 5vw, 1.875rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: rgba(46, 204, 113, 0.1);
+      border: 1px solid rgba(46, 204, 113, 0.28);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .status .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #2ecc71;
+      box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.55); }
+      70% { box-shadow: 0 0 0 8px rgba(46, 204, 113, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
     }
     .bio {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       color: var(--text-muted);
-      max-width: 320px;
-      margin: 0 auto 28px;
+      max-width: 360px;
+      margin: 0 auto 22px;
     }
-    .links {
+    .bio strong { color: var(--text); font-weight: 600; }
+
+    /* Цифры */
+    .stats {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
     }
+    .stat {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 6px;
+    }
+    .stat b {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat span { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* Услуги */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 12px;
+      text-align: left;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .chip {
+      font-size: 0.82rem;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(124, 108, 255, 0.12);
+      border: 1px solid rgba(124, 108, 255, 0.3);
+      color: var(--text);
+    }
+
+    /* Отзыв */
+    .quote {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 26px;
+    }
+    .quote p { font-size: 0.9rem; color: var(--text); margin-bottom: 8px; }
+    .quote cite { font-size: 0.8rem; color: var(--text-muted); font-style: normal; }
+
+    .links { display: flex; flex-direction: column; gap: 12px; }
     .link-btn {
       display: flex;
       align-items: center;
@@ -110,7 +214,7 @@
       text-decoration: none;
       font-size: 1rem;
       font-weight: 500;
-      transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+      transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
     }
     .link-btn:hover {
@@ -118,14 +222,37 @@
       border-color: rgba(124, 108, 255, 0.35);
       transform: translateY(-1px);
     }
-    .link-btn:active {
-      transform: translateY(0);
+    .link-btn:active { transform: translateY(0); }
+    .link-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* Главная кнопка-CTA */
+    .link-btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 16px 20px;
+      box-shadow: 0 10px 28px rgba(124, 108, 255, 0.4);
     }
-    .link-btn svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
+    .link-btn.primary:hover {
+      box-shadow: 0 14px 34px rgba(124, 108, 255, 0.55);
+      border-color: transparent;
     }
+
+    .secondary-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 18px 0 4px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
     .toast {
       position: fixed;
       bottom: 24px;
@@ -142,62 +269,90 @@
       pointer-events: none;
       z-index: 100;
     }
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
     @media (max-width: 380px) {
-      .card {
-        padding: 32px 18px 24px;
-        border-radius: 22px;
-      }
-      .avatar-wrap {
-        width: 100px;
-        height: 100px;
-      }
-      .link-btn {
-        padding: 13px 16px;
-        font-size: 0.95rem;
-      }
+      .card { padding: 32px 18px 24px; border-radius: 22px; }
+      .avatar-wrap { width: 100px; height: 100px; }
+      .link-btn { padding: 13px 16px; font-size: 0.95rem; }
+      .stat b { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <article class="card">
+      <span class="brand">AI-Isaev</span>
+
       <div class="avatar-wrap">
-        <img class="avatar" src="avatar1.png" alt="Исаев Дмитрий" width="120" height="120">
+        <img class="avatar" src="avatar.jpg" alt="Исаев Дмитрий" width="120" height="120">
       </div>
+
       <h1 class="name">Исаев Дмитрий</h1>
+
+      <div class="status"><span class="dot"></span> Принимаю новые проекты</div>
+
       <p class="bio">
-        Веб‑разработчик и инженер автоматизации.<br>
-        Помогаю бизнесу внедрять ИИ‑агентов и оптимизировать процессы
+        Внедряю <strong>ИИ-агентов</strong> и автоматизирую бизнес-процессы.
+        Освобождаю команды от рутины и&nbsp;экономлю бизнесу десятки часов в&nbsp;неделю.
       </p>
+
+      <!-- TODO: замени цифры на свои реальные показатели -->
+      <div class="stats">
+        <div class="stat"><b>20+</b><span>проектов</span></div>
+        <div class="stat"><b>5&nbsp;лет</b><span>опыта</span></div>
+        <div class="stat"><b>−30&nbsp;ч</b><span>рутины/нед</span></div>
+      </div>
+
+      <p class="section-title">Чем помогаю</p>
+      <div class="chips">
+        <span class="chip">ИИ-агенты</span>
+        <span class="chip">Чат-боты</span>
+        <span class="chip">Автоматизация процессов</span>
+        <span class="chip">Интеграции и API</span>
+        <span class="chip">Веб-разработка</span>
+      </div>
+
+      <!-- TODO: замени на реальный отзыв клиента (или удали блок до появления отзывов) -->
+      <div class="quote">
+        <p>«Бот на ИИ закрыл 70% обращений в поддержку — менеджеры наконец занялись продажами, а не перепиской».</p>
+        <cite>— Руководитель отдела, интернет-магазин</cite>
+      </div>
+
       <nav class="links" aria-label="Контакты">
-        <a class="link-btn" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">
+        <!-- Главный призыв к действию -->
+        <a class="link-btn primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
           </svg>
-          Telegram
+          Обсудить проект в Telegram
         </a>
-        <a class="link-btn" href="https://instagram.com/your_username" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-          </svg>
-          Instagram
-        </a>
+
+        <p class="secondary-label">Другие контакты</p>
+
         <a class="link-btn" href="https://www.youtube.com/@iiidalll" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
           YouTube
         </a>
+
+        <!-- Instagram: вставь реальную ссылку и раскомментируй
+        <a class="link-btn" href="https://instagram.com/ТВОЙ_АККАУНТ" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          Instagram
+        </a>
+        -->
+
         <button class="link-btn" type="button" id="max-btn" data-phone="+79081606836">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 9h10v2H7V9zm6 4H7v-2h6v2zm4-6H7V5h10v2z"/>
           </svg>
           MAX
         </button>
+
         <button class="link-btn" type="button" id="email-btn" data-email="dmitrisaev@yandex.ru">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -205,38 +360,47 @@
           Email
         </button>
       </nav>
+
+      <p class="footer">© <span id="year"></span> AI-Isaev · Исаев Дмитрий</p>
     </article>
   </main>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    const emailBtn = document.getElementById('email-btn');
     const toast = document.getElementById('toast');
     let toastTimer;
-    emailBtn.addEventListener('click', async () => {
-      const email = emailBtn.dataset.email;
-      try {
-        await navigator.clipboard.writeText(email);
-        showToast('Email скопирован: ' + email);
-      } catch {
-        window.location.href = 'mailto:' + email;
-      }
-    });
-    const maxBtn = document.getElementById('max-btn');
-    maxBtn.addEventListener('click', async () => {
-      const phone = maxBtn.dataset.phone;
-      try {
-        await navigator.clipboard.writeText(phone);
-        showToast('Номер MAX скопирован: ' + phone);
-      } catch {
-        window.location.href = 'tel:' + phone;
-      }
-    });
     function showToast(message) {
       toast.textContent = message;
       toast.classList.add('show');
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
     }
+    function copyContact(btn, value, label, fallback) {
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(value);
+          showToast(label + ' скопирован: ' + value);
+        } catch {
+          window.location.href = fallback + value;
+        }
+      });
+    }
+    const maxBtn = document.getElementById('max-btn');
+    copyContact(maxBtn, maxBtn.dataset.phone, 'Номер MAX', 'tel:');
+    const emailBtn = document.getElementById('email-btn');
+    copyContact(emailBtn, emailBtn.dataset.email, 'Email', 'mailto:');
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <!-- Аналитика: вставь сюда счётчик Яндекс.Метрики или Google Analytics.
+       Получи ID на metrika.yandex.ru, затем раскомментируй и подставь XXXXXXXX:
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    ym(XXXXXXXX,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});
+  </script>
+  -->
 </body>
 </html>
