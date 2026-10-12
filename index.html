@@ -1,713 +1,252 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Дмитрий Исаев — автоматизация данных и процессов</title>
-  <meta name="description" content="Помогаю малому бизнесу убрать ручные операции: сбор данных, контент и внутренний учёт. Посмотрите реальные кейсы и расскажите о своей задаче.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дмитрий Исаев — автоматизация и внутренние сервисы</title>
+  <meta name="description" content="Разрабатываю инструменты для бизнеса: каталоги, боты, CRM и внутренние сервисы. Посмотрите реальные проекты и расскажите, что сейчас приходится делать вручную.">
   <meta name="author" content="Дмитрий Исаев">
-  <meta name="theme-color" content="#101312">
+  <meta name="theme-color" content="#f6f4ef">
   <link rel="canonical" href="https://dmitrisaev888-creator.github.io/hello-github/">
-
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Дмитрий Исаев — автоматизация данных и процессов">
-  <meta property="og:description" content="Парсеры, боты, рабочие панели и ИИ-конвейеры для малого бизнеса.">
+  <meta property="og:title" content="Дмитрий Исаев — автоматизация для бизнеса">
+  <meta property="og:description" content="Каталоги, боты и рабочие инструменты, которые снимают ручную рутину.">
   <meta property="og:url" content="https://dmitrisaev888-creator.github.io/hello-github/">
   <meta property="og:image" content="https://dmitrisaev888-creator.github.io/hello-github/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary_large_image">
-
-  <script>document.documentElement.classList.add("js");</script>
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='24'%20fill='%23b7f34a'/%3E%3Cpath%20d='M25%2050h20M55%2050h20M50%2025v20M50%2055v20'%20stroke='%23101312'%20stroke-width='9'%20stroke-linecap='round'/%3E%3C/svg%3E">
-
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231f4d3f'/%3E%3Cpath d='M18 32h28M32 18v28' stroke='%23f6f4ef' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Дмитрий Исаев",
-    "url": "https://dmitrisaev888-creator.github.io/hello-github/",
-    "sameAs": [
-      "https://t.me/IIIdalll",
-      "https://www.youtube.com/@iiidalll"
-    ],
-    "jobTitle": "Разработчик автоматизаций",
-    "knowsAbout": ["Python", "JavaScript", "API", "парсинг данных", "Telegram-боты", "LLM", "автоматизация бизнес-процессов"]
-  }
+  {"@context":"https://schema.org","@type":"Person","name":"Дмитрий Исаев","url":"https://dmitrisaev888-creator.github.io/hello-github/","sameAs":["https://t.me/IIIdalll","https://www.youtube.com/@iiidalll"],"jobTitle":"Разработчик автоматизаций","knowsAbout":["Python","JavaScript","API","парсинг данных","Telegram-боты","автоматизация бизнес-процессов"]}
   </script>
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    * { margin: 0; }
-
-    :root {
-      --bg: #101312;
-      --bg-soft: #171b19;
-      --panel: #1d221f;
-      --panel-2: #242a26;
-      --line: rgba(238, 244, 238, 0.12);
-      --line-strong: rgba(238, 244, 238, 0.22);
-      --text: #f1f5ef;
-      --muted: #a7b0a9;
-      --accent: #b7f34a;
-      --accent-soft: rgba(183, 243, 74, 0.12);
-      --orange: #ffb86b;
-      --blue: #73b7ff;
-      --max: 1180px;
-      --radius: 24px;
-      --shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      min-width: 280px;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 10% 6%, rgba(183, 243, 74, 0.09), transparent 28rem),
-        radial-gradient(circle at 90% 26%, rgba(115, 183, 255, 0.07), transparent 30rem),
-        var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-    img { display: block; max-width: 100%; }
-    [id] { scroll-margin-top: 88px; }
-
-    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
-    .section { padding: 104px 0; }
-    .section + .section { border-top: 1px solid var(--line); }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--accent);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 0 5px rgba(183, 243, 74, 0.09);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.55fr);
-      gap: 60px;
-      align-items: end;
-      margin-bottom: 48px;
-    }
-
-    h1, h2, h3 { line-height: 1.05; letter-spacing: -0.045em; }
-    h2 { margin-top: 18px; font-size: clamp(2.2rem, 5vw, 4.6rem); }
-    .section-lead { color: var(--muted); font-size: 1.04rem; }
-    .hero-grid > *, .section-head > *, .about-grid > *, .case > * { min-width: 0; }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(238, 244, 238, 0.08);
-      background: rgba(16, 19, 18, 0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .topbar-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; }
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      color: var(--bg);
-      background: var(--accent);
-      font-size: 0.8rem;
-      letter-spacing: -0.04em;
-    }
-    .brand span:last-child { letter-spacing: -0.02em; }
-
-    .nav { display: flex; align-items: center; gap: 28px; }
-    .nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 650; transition: color 0.2s; }
-    .nav a:hover { color: var(--text); }
-
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 0 19px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      color: var(--text);
-      background: transparent;
-      text-decoration: none;
-      font: inherit;
-      font-size: 0.91rem;
-      font-weight: 760;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s, border-color 0.2s;
-    }
-    .button:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .button.primary { color: #101312; border-color: var(--accent); background: var(--accent); }
-    .button.primary:hover { background: #c4ff57; }
-    .button.small { min-height: 40px; padding: 0 16px; font-size: 0.82rem; }
-    .button svg { width: 18px; height: 18px; }
-
-    .hero { min-height: calc(100vh - 72px); display: flex; align-items: center; padding: 74px 0 86px; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.76fr); gap: 64px; align-items: center; }
-    .hero h1 { max-width: 780px; margin: 22px 0 26px; font-size: clamp(3.2rem, 7vw, 6.6rem); }
-    .hero h1 span { color: var(--accent); }
-    .hero-copy { max-width: 690px; color: #c7d0c8; font-size: clamp(1.06rem, 2vw, 1.28rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .action-note { margin-top: 15px; color: var(--muted); font-size: 0.87rem; }
-
-    .proofs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 50px;
-    }
-    .proof { padding-top: 17px; border-top: 1px solid var(--line-strong); }
-    .proof strong { display: block; font-size: clamp(1.35rem, 2.4vw, 2rem); letter-spacing: -0.04em; }
-    .proof span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.82rem; line-height: 1.35; }
-
-    .system-card {
-      position: relative;
-      min-height: 510px;
-      overflow: hidden;
-      padding: 28px;
-      border: 1px solid var(--line-strong);
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
-      box-shadow: var(--shadow);
-    }
-    .system-card::after {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      right: -130px;
-      bottom: -150px;
-      border-radius: 50%;
-      background: rgba(183, 243, 74, 0.11);
-      filter: blur(2px);
-    }
-    .window-bar { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 0.74rem; }
-    .window-bar i { width: 8px; height: 8px; border-radius: 50%; background: #4e5650; }
-    .window-bar i:first-child { background: var(--orange); }
-    .window-bar i:nth-child(2) { background: #ffe37c; }
-    .window-bar i:nth-child(3) { background: var(--accent); }
-    .window-bar span { margin-left: 7px; }
-
-    .flow { position: relative; z-index: 1; display: grid; gap: 13px; margin-top: 42px; }
-    .flow-row { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: center; gap: 8px; }
-    .flow-node { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: rgba(16,19,18,0.72); }
-    .flow-node em { display: block; color: var(--muted); font-size: 0.67rem; font-style: normal; text-transform: uppercase; letter-spacing: 0.11em; }
-    .flow-node b { display: block; margin-top: 4px; font-size: 0.9rem; }
-    .flow-arrow { color: var(--accent); text-align: center; font-weight: 900; }
-    .flow-result { margin-top: 8px; padding: 18px; border: 1px solid rgba(183,243,74,0.27); border-radius: 18px; background: var(--accent-soft); }
-    .flow-result span { display: block; color: var(--accent); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; }
-    .flow-result strong { display: block; margin-top: 6px; font-size: 1.14rem; }
-    .system-note { position: relative; z-index: 2; margin-top: 18px; color: var(--muted); font-size: 0.8rem; }
-
-    .cases { display: grid; gap: 24px; }
-    .case {
-      display: grid;
-      grid-template-columns: minmax(330px, 0.85fr) minmax(0, 1fr);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--bg-soft);
-    }
-    .case:nth-child(even) .case-visual { order: 2; }
-    .case-visual { min-height: 430px; padding: 25px; background: #0d100f; border-right: 1px solid var(--line); }
-    .case:nth-child(even) .case-visual { border-right: 0; border-left: 1px solid var(--line); }
-    .case-body { display: flex; flex-direction: column; justify-content: center; padding: clamp(30px, 5vw, 66px); }
-    .case-kicker { color: var(--accent); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
-    .case h3 { margin: 15px 0 18px; font-size: clamp(1.8rem, 3.5vw, 3.1rem); }
-    .case p { color: var(--muted); }
-    .case-list { display: grid; gap: 10px; margin-top: 24px; list-style: none; padding: 0; }
-    .case-list li { position: relative; padding-left: 22px; color: #d8ddd8; font-size: 0.92rem; }
-    .case-list li::before { content: "↗"; position: absolute; left: 0; color: var(--accent); }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
-    .tag { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 0.72rem; }
-    .case-link { align-self: flex-start; margin-top: 30px; color: var(--text); text-underline-offset: 5px; text-decoration-color: var(--accent); font-weight: 760; }
-
-    .mock-window { height: 100%; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #171b19; box-shadow: 0 22px 50px rgba(0,0,0,0.28); }
-    .mock-top { height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.74rem; }
-    .mock-title { color: var(--text); font-weight: 750; }
-
-    .catalog-toolbar { display: grid; grid-template-columns: 1fr 0.6fr 0.6fr; gap: 8px; padding: 14px; }
-    .fake-input { min-height: 34px; border: 1px solid var(--line); border-radius: 9px; background: #111412; }
-    .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 14px 14px; }
-    .product { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #111412; }
-    .product-image { height: 84px; background: linear-gradient(135deg, #39433c, #202720 55%, rgba(183,243,74,0.2)); }
-    .product:nth-child(2) .product-image { background: linear-gradient(135deg, #2b3845, #1d2429 55%, rgba(115,183,255,0.24)); }
-    .product:nth-child(3) .product-image { background: linear-gradient(135deg, #47392b, #25211b 55%, rgba(255,184,107,0.2)); }
-    .product:nth-child(4) .product-image { background: linear-gradient(135deg, #3a2d43, #241e29 55%, rgba(188,132,255,0.2)); }
-    .product-copy { padding: 10px; }
-    .product-copy b { display: block; font-size: 0.72rem; }
-    .product-copy span { display: block; margin-top: 5px; color: var(--muted); font-size: 0.64rem; }
-
-    .post-list { display: grid; grid-template-columns: 0.43fr 1fr; height: calc(100% - 50px); }
-    .post-sidebar { padding: 14px; border-right: 1px solid var(--line); }
-    .post-sidebar b { display: block; margin-bottom: 14px; font-size: 0.72rem; }
-    .side-line { height: 29px; margin-bottom: 7px; border-radius: 8px; background: #111412; }
-    .side-line.active { background: var(--accent-soft); border: 1px solid rgba(183,243,74,0.2); }
-    .post-main { padding: 14px; }
-    .post-card { padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #111412; }
-    .post-img { height: 92px; border-radius: 9px; background: linear-gradient(135deg, #25364b, #182026); }
-    .text-line { height: 8px; margin-top: 10px; border-radius: 99px; background: #39413c; }
-    .text-line.short { width: 58%; }
-    .post-actions { display: flex; gap: 7px; margin-top: 13px; }
-    .post-actions span { flex: 1; padding: 7px 3px; border-radius: 8px; background: var(--accent); color: #101312; text-align: center; font-size: 0.58rem; font-weight: 800; }
-    .post-actions span:last-child { color: var(--muted); background: #242a26; }
-
-    .project-panel { padding: 14px; }
-    .project-summary { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 13px; border: 1px solid var(--line); border-radius: 12px; background: #111412; }
-    .project-summary b { font-size: 0.78rem; }
-    .project-summary small { display: block; margin-top: 3px; color: var(--muted); }
-    .status-pill { padding: 6px 9px; border-radius: 99px; color: var(--accent); background: var(--accent-soft); font-size: 0.58rem; font-weight: 800; }
-    .stage-label { margin: 18px 0 9px; color: var(--muted); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; }
-    .stage-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
-    .stage { min-height: 58px; padding: 8px; border: 1px solid var(--line); border-radius: 9px; background: #111412; font-size: 0.58rem; }
-    .stage.done { border-color: rgba(183,243,74,0.25); background: var(--accent-soft); }
-    .supplier { display: grid; grid-template-columns: 0.7fr 1fr auto; gap: 8px; margin-top: 8px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); font-size: 0.62rem; }
-
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .service { min-height: 350px; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); transition: border-color 0.2s, transform 0.2s; }
-    .service:hover { border-color: rgba(183,243,74,0.45); transform: translateY(-4px); }
-    .service-num { color: var(--accent); font-size: 0.75rem; font-weight: 800; }
-    .service h3 { margin-top: auto; padding-top: 70px; font-size: 1.6rem; }
-    .service p { margin-top: 14px; color: var(--muted); font-size: 0.92rem; }
-    .service-foot { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); color: #dce2db; font-size: 0.82rem; }
-    .service-outcome { display: block; margin-bottom: 12px; color: var(--text); font-size: 0.92rem; font-weight: 700; }
-
-    .process { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: steps; }
-    .step { position: relative; min-height: 280px; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); counter-increment: steps; }
-    .step:first-child { border-color: rgba(183,243,74,0.42); background: linear-gradient(145deg, rgba(183,243,74,0.13), var(--bg-soft) 72%); }
-    .step::before { content: "0" counter(steps); display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(183,243,74,0.38); border-radius: 12px; color: var(--accent); background: var(--accent-soft); font-size: 0.76rem; font-weight: 850; }
-    .step h3 { margin-top: auto; padding-top: 35px; font-size: 1.22rem; letter-spacing: -0.025em; }
-    .step p { margin-top: 11px; color: var(--muted); font-size: 0.9rem; }
-    .process-cta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-top: 18px; padding: 28px 32px; border: 1px solid rgba(183,243,74,0.28); border-radius: var(--radius); background: linear-gradient(100deg, rgba(183,243,74,0.11), rgba(183,243,74,0.025)); }
-    .process-cta strong { display: block; font-size: 1.2rem; letter-spacing: -0.02em; }
-    .process-cta p { max-width: 690px; margin-top: 6px; color: #bec8be; font-size: 0.92rem; }
-    .process-cta .button { white-space: nowrap; }
-
-    .about-grid { display: grid; grid-template-columns: 0.65fr 1.2fr; gap: 72px; align-items: center; }
-    .portrait-card { position: relative; overflow: hidden; aspect-ratio: 4/5; border: 1px solid var(--line); border-radius: 28px; background: var(--panel); }
-    .portrait-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.86) contrast(1.03); }
-    .portrait-card::after { content: "Нижний Новгород"; position: absolute; left: 18px; bottom: 18px; padding: 8px 12px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; background: rgba(16,19,18,0.76); font-size: 0.72rem; backdrop-filter: blur(10px); }
-    .about-copy h2 { max-width: 800px; }
-    .about-copy > p { max-width: 730px; margin-top: 25px; color: var(--muted); font-size: 1.05rem; }
-    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-    .skills span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: #d8ddd8; font-size: 0.78rem; }
-
-    .contact-card {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 36px;
-      align-items: end;
-      padding: clamp(32px, 7vw, 80px);
-      border-radius: 32px;
-      color: #101312;
-      background: var(--accent);
-    }
-    .contact-card::after { content: "↗"; position: absolute; right: 4%; top: -16%; color: rgba(16,19,18,0.08); font-size: 24rem; font-weight: 900; line-height: 1; }
-    .contact-card h2 { position: relative; z-index: 1; max-width: 780px; font-size: clamp(2.5rem, 6vw, 5.6rem); }
-    .contact-card p { position: relative; z-index: 1; max-width: 640px; margin-top: 22px; color: rgba(16,19,18,0.72); font-weight: 620; }
-    .contact-card .contact-hint { margin-top: 16px; font-size: 0.91rem; }
-    .contact-actions { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 10px; min-width: 260px; }
-    .contact-card .button { color: #101312; border-color: rgba(16,19,18,0.28); }
-    .contact-card .button.dark { color: var(--text); border-color: #101312; background: #101312; }
-
-    footer { padding: 30px 0 44px; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 0.8rem; }
-    .footer-links { display: flex; gap: 18px; }
-    .footer-links a { text-underline-offset: 4px; }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      z-index: 60;
-      transform: translate(-50%, 80px);
-      padding: 12px 18px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      color: var(--text);
-      background: rgba(20, 24, 22, 0.94);
-      box-shadow: var(--shadow);
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.3s ease;
-    }
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-    .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .js [data-reveal].visible { opacity: 1; transform: none; }
-
-    @media (max-width: 980px) {
-      .nav a:not(.button) { display: none; }
-      .hero { min-height: auto; }
-      .hero-grid, .section-head, .about-grid { grid-template-columns: minmax(0, 1fr); }
-      .hero-grid { gap: 48px; }
-      .system-card { min-height: 470px; }
-      .section-head { gap: 20px; }
-      .case, .case:nth-child(even) { grid-template-columns: 1fr; }
-      .case:nth-child(even) .case-visual { order: 0; }
-      .case-visual, .case:nth-child(even) .case-visual { border: 0; border-bottom: 1px solid var(--line); }
-      .services-grid { grid-template-columns: 1fr; }
-      .service { min-height: 260px; }
-      .service h3 { padding-top: 42px; }
-      .process { grid-template-columns: repeat(2, 1fr); }
-      .step { min-height: 240px; }
-      .contact-card { grid-template-columns: 1fr; }
-      .contact-actions { min-width: 0; max-width: 340px; }
-      .portrait-card { max-width: 470px; }
-    }
-
-    @media (max-width: 640px) {
-      .shell { width: min(calc(100% - 24px), var(--max)); }
-      .section { padding: 76px 0; }
-      .topbar-inner { min-height: 64px; }
-      .brand span:last-child { display: none; }
-      .nav .button { min-height: 38px; padding: 0 13px; font-size: 0.77rem; }
-      .hero { padding: 54px 0 64px; }
-      .hero h1 { font-size: clamp(2.7rem, 14vw, 4.1rem); }
-      .proofs { grid-template-columns: 1fr; }
-      .proof { display: grid; grid-template-columns: 110px 1fr; align-items: center; gap: 12px; }
-      .proof span { margin-top: 0; }
-      .system-card { min-height: 440px; padding: 20px; border-radius: 24px; }
-      .flow-row { grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr); }
-      .flow-node { padding: 11px; }
-      .flow-node b { overflow-wrap: anywhere; font-size: 0.75rem; }
-      .case-visual { min-height: 380px; padding: 14px; }
-      .catalog-toolbar { grid-template-columns: 1fr; }
-      .catalog-toolbar .fake-input:nth-child(n+2) { display: none; }
-      .stage-row { grid-template-columns: repeat(2, 1fr); }
-      .process { grid-template-columns: 1fr; }
-      .step { min-height: 205px; padding: 22px; }
-      .step h3 { padding-top: 28px; }
-      .process-cta { grid-template-columns: 1fr; padding: 25px 22px; }
-      .process-cta .button { width: 100%; white-space: normal; }
-      .contact-card { padding: 32px 22px; border-radius: 24px; }
-      .contact-actions { max-width: none; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      [data-reveal] { opacity: 1; transform: none; }
-    }
+    @font-face{font-family:Manrope;src:url("assets/manrope-cyrillic.woff2") format("woff2");font-style:normal;font-weight:400 800;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+    @font-face{font-family:Manrope;src:url("assets/manrope-latin.woff2") format("woff2");font-style:normal;font-weight:400 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    *,*::before,*::after{box-sizing:border-box}
+    *{margin:0}
+    :root{--paper:#f6f4ef;--paper-deep:#ece9e1;--white:#fffefa;--ink:#1d2926;--muted:#606b66;--line:#dcded6;--green:#1f4d3f;--green-dark:#17392f;--green-light:#dce9e1;--clay:#b75d40;--max:1160px;--serif:Manrope,Arial,sans-serif}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{min-width:320px;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    body::before{position:absolute;z-index:-1;top:0;left:0;width:100%;height:700px;background:radial-gradient(ellipse at 76% 5%,rgba(219,227,215,.62),transparent 49%),linear-gradient(180deg,#f8f6f1,rgba(248,246,241,0));content:"";pointer-events:none}
+    a{color:inherit}
+    img{display:block;max-width:100%}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--clay);outline-offset:4px}
+    .wrap{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(29,41,38,.09);background:rgba(246,244,239,.91);backdrop-filter:blur(14px)}
+    .topbar-inner{display:flex;min-height:76px;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-size:.95rem;font-weight:750;letter-spacing:-.035em}
+    .brand-mark{display:grid;width:34px;height:34px;place-items:center;border-radius:50%;background:var(--green);color:var(--paper);font-size:.83rem;font-weight:800}
+    .nav{display:flex;align-items:center;gap:30px}
+    .nav-short{display:none}
+    .nav a:not(.button){color:var(--muted);font-size:.84rem;font-weight:650;text-decoration:none;transition:color .2s}
+    .nav a:not(.button):hover{color:var(--ink)}
+    .button{display:inline-flex;min-height:50px;align-items:center;justify-content:center;gap:10px;padding:0 21px;border:1px solid var(--green);border-radius:8px;background:transparent;color:var(--green);font:inherit;font-size:.9rem;font-weight:750;text-decoration:none;transition:background .2s,color .2s,transform .2s,border-color .2s}
+    .button:hover{transform:translateY(-2px);background:var(--green-light)}
+    .button.primary{background:var(--green);color:#fff}
+    .button.primary:hover{border-color:var(--green-dark);background:var(--green-dark)}
+    .button svg{width:18px;height:18px}
+    .hero{padding:76px 0 72px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.72fr);align-items:center;gap:76px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--green);font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow::before{width:24px;height:1px;background:currentColor;content:""}
+    h1,h2,h3{font-weight:700;letter-spacing:-.055em;line-height:1.1}
+    h1{max-width:790px;margin:22px 0 24px;font-size:clamp(3.3rem,6.6vw,6.15rem)}
+    h1 span{color:var(--green);font-weight:500}
+    .hero-copy{max-width:650px;color:#4e5b55;font-size:clamp(1.03rem,1.6vw,1.2rem);line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-note{margin-top:15px;color:var(--muted);font-size:.83rem}
+    .portrait-wrap{position:relative;width:min(100%,408px);justify-self:end}
+    .portrait{aspect-ratio:4/4.8;overflow:hidden;background:var(--paper-deep)}
+    .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 36%}
+    .portrait-caption{position:absolute;right:-24px;bottom:30px;max-width:225px;padding:18px 20px;border:1px solid rgba(31,77,63,.14);background:var(--white);box-shadow:0 14px 44px rgba(29,41,38,.1)}
+    .portrait-caption strong{display:block;font-size:.9rem;letter-spacing:-.025em}
+    .portrait-caption span{display:block;margin-top:3px;color:var(--muted);font-size:.76rem}
+    .hero-foot{display:flex;align-items:center;gap:22px;margin-top:54px;padding-top:24px;border-top:1px solid var(--line)}
+    .hero-foot-label{flex:0 0 auto;color:var(--muted);font-size:.77rem}
+    .hero-areas{display:flex;flex-wrap:wrap;gap:9px 22px}
+    .hero-areas span{font-size:.84rem;font-weight:700}
+    .section{padding:98px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:44px;margin-bottom:38px}
+    .section-title{max-width:660px;margin-top:13px;font-size:clamp(2.35rem,4.4vw,4.2rem)}
+    .section-lead{max-width:390px;color:var(--muted);font-size:.97rem;line-height:1.7}
+    #cases{border-top:1px solid var(--line);background:var(--white)}
+    .case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .case-card{min-width:0;overflow:hidden;border:1px solid var(--line);background:var(--paper);transition:box-shadow .25s,transform .25s}
+    .case-card:hover{transform:translateY(-3px);box-shadow:0 18px 45px rgba(29,41,38,.09)}
+    .case-image{position:relative;overflow:hidden;aspect-ratio:1.64;background:#e9e8e2}
+    .case-image img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}
+    .case-card:hover .case-image img{transform:scale(1.025)}
+    .case-image--crm img{object-position:top left}
+    .case-image--ark img{object-position:top center}
+    .case-image-label{position:absolute;right:14px;bottom:14px;padding:5px 10px;border:1px solid rgba(255,255,255,.65);background:rgba(255,254,250,.88);color:var(--ink);font-size:.68rem;font-weight:750;backdrop-filter:blur(8px)}
+    .case-body{padding:24px 26px 28px}
+    .case-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--green);font-size:.67rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .case-status{padding:4px 8px;border:1px solid rgba(31,77,63,.18);color:#4a6256;font-size:.62rem;letter-spacing:0;text-transform:none}
+    .case-body h3{margin-top:12px;font-size:clamp(1.35rem,2.5vw,1.9rem)}
+    .case-body p{margin-top:10px;color:var(--muted);font-size:.9rem;line-height:1.7}
+    .case-facts{display:grid;gap:7px;margin-top:16px;padding:0;list-style:none}
+    .case-facts li{position:relative;padding-left:17px;color:#3f4e47;font-size:.81rem;line-height:1.5}
+    .case-facts li::before{position:absolute;top:.72em;left:0;width:6px;height:6px;background:var(--clay);content:""}
+    .case-link{display:inline-flex;align-items:center;gap:7px;margin-top:19px;color:var(--green);font-size:.83rem;font-weight:800;text-decoration-thickness:1px;text-underline-offset:4px}
+    .more-work{margin-top:68px;padding-top:36px;border-top:1px solid var(--line)}
+    .more-title{font-size:1.28rem;letter-spacing:-.04em}
+    .more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;margin-top:20px}
+    .more-item{padding:20px 0;border-bottom:1px solid var(--line)}
+    .more-item strong{display:block;font-size:.94rem;letter-spacing:-.025em}
+    .more-item p{margin-top:5px;color:var(--muted);font-size:.79rem;line-height:1.6}
+    .services{background:var(--paper)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .service{min-height:235px;padding:26px 24px 30px 0}
+    .service+.service{padding-left:25px;border-left:1px solid var(--line)}
+    .service-num{color:var(--clay);font-size:.75rem;font-weight:800;letter-spacing:.08em}
+    .service h3{margin-top:45px;font-size:1.4rem;letter-spacing:-.045em}
+    .service p{margin-top:11px;color:var(--muted);font-size:.86rem;line-height:1.7}
+    .process{background:var(--green);color:#f5f4ed}
+    .process .eyebrow{color:#c2d8ca}
+    .process .section-lead{color:#c6d4cd}
+    .process .section-title{max-width:710px}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.25)}
+    .step{min-height:220px;padding:21px 19px 0 0}
+    .step+.step{padding-left:20px;border-left:1px solid rgba(255,255,255,.2)}
+    .step-number{color:#c2d8ca;font-size:.74rem;font-weight:800;letter-spacing:.1em}
+    .step h3{margin-top:45px;font-size:1.19rem;letter-spacing:-.04em}
+    .step p{margin-top:10px;color:#c6d4cd;font-size:.82rem;line-height:1.7}
+    .process-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:20px;padding:25px 28px;background:#f3f0e8;color:var(--ink)}
+    .process-cta strong{font-size:1.15rem;letter-spacing:-.035em}
+    .process-cta p{margin-top:4px;color:var(--muted);font-size:.85rem}
+    .process-cta .button{flex:0 0 auto}
+    .about{background:var(--paper-deep)}
+    .about-grid{display:grid;grid-template-columns:minmax(260px,.65fr) minmax(0,1.15fr);align-items:center;gap:80px}
+    .about-photo{aspect-ratio:4/4.7;overflow:hidden;max-width:380px;background:#ddd7ca}
+    .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+    .about-copy h2{max-width:690px;margin-top:14px;font-size:clamp(2.15rem,4.1vw,3.8rem)}
+    .about-copy p{max-width:660px;margin-top:20px;color:#4e5b55;font-size:.97rem;line-height:1.8}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .skills span{padding:6px 10px;border:1px solid rgba(29,41,38,.16);color:#45544d;font-size:.72rem;font-weight:650}
+    .contact{padding:90px 0 78px;background:var(--white)}
+    .contact-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:42px;padding:clamp(30px,5.6vw,66px);background:#e5ede5}
+    .contact-card h2{max-width:750px;font-size:clamp(2.4rem,5vw,4.7rem)}
+    .contact-card p{max-width:660px;margin-top:15px;color:#52615a;font-size:.94rem}
+    .contact-actions{display:grid;min-width:238px;gap:10px}
+    .contact-actions .button{width:100%}
+    .contact-actions .button:not(.primary){border-color:rgba(31,77,63,.32)}
+    footer{padding:26px 0 36px;background:var(--white)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:.75rem}
+    .footer-links{display:flex;gap:18px}
+    .footer-links a{text-underline-offset:3px}
+    .toast{position:fixed;bottom:22px;left:50%;z-index:50;transform:translate(-50%,80px);padding:11px 16px;background:var(--ink);color:white;font-size:.82rem;opacity:0;pointer-events:none;transition:transform .25s,opacity .25s}
+    .toast.show{transform:translate(-50%,0);opacity:1}
+    .js [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+    .js [data-reveal].visible{opacity:1;transform:none}
+    @media(max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(260px,.7fr);gap:42px}.portrait-caption{right:-10px}.section-head{align-items:start;flex-direction:column;gap:14px}.section-lead{max-width:600px}.case-grid{gap:14px}.case-body{padding:21px}.more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{gap:44px}.contact-card{grid-template-columns:minmax(0,1fr) auto;gap:24px}}
+    @media(max-width:680px){.wrap{width:min(calc(100% - 32px),var(--max))}.topbar-inner{min-height:66px}.brand{gap:9px;font-size:.87rem}.nav{gap:0}.nav a:not(.button){display:none}.nav .button{min-height:40px;padding:0 11px;font-size:.76rem}.nav-long{display:none}.nav-short{display:inline}.hero{padding:54px 0 52px}.hero-grid{grid-template-columns:1fr;gap:34px}.hero h1{font-size:clamp(3rem,13vw,4.5rem)}.hero-copy{font-size:1rem}.portrait-wrap{width:min(86%,390px);justify-self:center;margin-right:10px}.portrait{aspect-ratio:4/4.5}.portrait-caption{right:-20px;bottom:18px;padding:13px 14px}.hero-foot{align-items:start;flex-direction:column;gap:11px;margin-top:37px;padding-top:18px}.hero-areas{gap:9px 17px}.hero-areas span{font-size:.78rem}.section{padding:70px 0}.section-head{margin-bottom:26px}.section-title{font-size:clamp(2.15rem,10vw,3.1rem)}.section-lead{font-size:.9rem}.case-grid{grid-template-columns:1fr;gap:14px}.case-image{aspect-ratio:1.5}.case-body{padding:19px 20px 22px}.case-body h3{font-size:1.55rem}.more-work{margin-top:48px;padding-top:27px}.more-grid{grid-template-columns:1fr}.more-item{padding:15px 0}.service-grid{grid-template-columns:1fr}.service{min-height:0;padding:21px 0 23px}.service+.service{padding-left:0;border-left:0;border-top:1px solid var(--line)}.service h3{margin-top:21px;font-size:1.25rem}.steps{grid-template-columns:1fr 1fr}.step{min-height:190px;padding:18px 15px 15px 0}.step+.step{padding-left:15px}.step:nth-child(3){padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.2)}.step:nth-child(4){border-top:1px solid rgba(255,255,255,.2)}.step h3{margin-top:27px;font-size:1.06rem}.process-cta{align-items:stretch;flex-direction:column;padding:22px 19px}.process-cta .button{width:100%}.about-grid{grid-template-columns:1fr;gap:34px}.about-photo{width:min(80%,370px);margin-inline:auto;aspect-ratio:4/4.5}.about-copy h2{font-size:2.5rem}.contact{padding:62px 0 48px}.contact-card{grid-template-columns:1fr;gap:24px;padding:28px 22px}.contact-card h2{font-size:2.75rem}.contact-actions{min-width:0}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{gap:16px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.js [data-reveal]{opacity:1;transform:none}}
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="shell topbar-inner">
-      <a class="brand" href="#top" aria-label="На главную">
-        <span class="brand-mark">AI</span>
-        <span>Дмитрий Исаев</span>
-      </a>
-      <nav class="nav" aria-label="Главная навигация">
-        <a href="#cases">Кейсы</a>
-        <a href="#services">Услуги</a>
-        <a href="#process">Как работаю</a>
-        <a class="button small primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Обсудить задачу</a>
-      </nav>
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Дмитрий Исаев — на главную"><span class="brand-mark">ДИ</span><span>Дмитрий Исаев</span></a>
+      <nav class="nav" aria-label="Главная навигация"><a href="#cases">Проекты</a><a href="#services">Чем помогу</a><a href="#process">Этапы</a><a class="button primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer"><span class="nav-long">Обсудить задачу</span><span class="nav-short">Написать</span><span aria-hidden="true">↗</span></a></nav>
     </div>
   </header>
-
   <main id="top">
     <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <span class="eyebrow">Разработчик автоматизаций</span>
-          <h1>Превращаю ручную работу <span>в понятный процесс</span></h1>
-          <p class="hero-copy">
-            Если сотрудники переносят данные между сайтами, таблицами и чатами, помогу собрать эту цепочку в один рабочий инструмент.
-            Автоматизирую каталоги, контент и внутренний учёт для малого бизнеса.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">
-              Рассказать о своей задаче
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="button" href="#cases">Посмотреть кейсы</a>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div data-reveal>
+            <span class="eyebrow">Автоматизация для малого бизнеса</span>
+            <h1>Убираю ручную работу <span>из бизнеса</span></h1>
+            <p class="hero-copy">Разрабатываю каталоги, ботов, CRM и внутренние сервисы. Беру операцию, которую команда повторяет вручную, и превращаю её в понятный рабочий инструмент.</p>
+            <div class="hero-actions"><a class="button primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Рассказать о своей задаче <span aria-hidden="true">↗</span></a><a class="button" href="#cases">Посмотреть проекты</a></div>
+            <p class="hero-note">Первый шаг — коротко описать, что сейчас приходится делать вручную. Техническое задание не нужно.</p>
           </div>
-          <p class="action-note">Достаточно пары предложений о том, что сейчас приходится делать вручную.</p>
-
-          <div class="proofs" aria-label="Подтверждённые результаты">
-            <div class="proof"><strong>13 703</strong><span>товара в работающем каталоге</span></div>
-            <div class="proof"><strong>2</strong><span>реальные публикации через AI-конвейер</span></div>
-            <div class="proof"><strong>1</strong><span>клиентская система уже в работе</span></div>
+          <div class="portrait-wrap" data-reveal>
+            <div class="portrait"><img src="avatar-hd.jpg" alt="Дмитрий Исаев" width="1003" height="1254" fetchpriority="high"></div>
+            <div class="portrait-caption"><strong>Дмитрий Исаев</strong><span>Разработка и автоматизация · Нижний Новгород</span></div>
           </div>
         </div>
-
-        <div class="system-card" aria-label="Схема автоматизации">
-          <div class="window-bar"><i></i><i></i><i></i><span>рабочий контур</span></div>
-          <div class="flow">
-            <div class="flow-row">
-              <div class="flow-node"><em>источники</em><b>Сайты · API · RSS</b></div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-node"><em>сбор</em><b>Парсинг данных</b></div>
-            </div>
-            <div class="flow-row">
-              <div class="flow-node"><em>хранение</em><b>SQLite · Postgres</b></div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-node"><em>обработка</em><b>Правила · LLM</b></div>
-            </div>
-            <div class="flow-row">
-              <div class="flow-node"><em>контроль</em><b>Панель оператора</b></div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-node"><em>действие</em><b>Пост · файл · бот</b></div>
-            </div>
-            <div class="flow-result">
-              <span>результат</span>
-              <strong>Один понятный рабочий процесс вместо ручной цепочки</strong>
-            </div>
-          </div>
-          <p class="system-note">ИИ подключается там, где он действительно полезен. Критичные действия остаются под контролем человека.</p>
-        </div>
+        <div class="hero-foot"><span class="hero-foot-label">Рабочие направления</span><div class="hero-areas"><span>Каталоги и данные</span><span>Боты и CRM</span><span>Внутренние сервисы</span><span>ИИ-процессы</span></div></div>
       </div>
     </section>
 
     <section class="section" id="cases">
-      <div class="shell">
-        <div class="section-head" data-reveal>
-          <div>
-            <span class="eyebrow">Портфолио</span>
-            <h2>Работающие системы, а не обещания</h2>
-          </div>
-          <p class="section-lead">Показываю фактический статус каждого проекта. Без выдуманных отзывов, клиентов и показателей.</p>
-        </div>
-
-        <div class="cases">
-          <article class="case" data-reveal>
-            <div class="case-visual">
-              <div class="mock-window">
-                <div class="mock-top"><span class="mock-title">Каталог поставщиков</span><span>13 703 позиции</span></div>
-                <div class="catalog-toolbar"><div class="fake-input"></div><div class="fake-input"></div><div class="fake-input"></div></div>
-                <div class="catalog-grid">
-                  <div class="product"><div class="product-image"></div><div class="product-copy"><b>Подвесной светильник</b><span>Maytoni · в наличии</span></div></div>
-                  <div class="product"><div class="product-image"></div><div class="product-copy"><b>Люстра коллекции Aura</b><span>Новинка · 42 900 ₽</span></div></div>
-                  <div class="product"><div class="product-image"></div><div class="product-copy"><b>Настенный светильник</b><span>Loft It · в наличии</span></div></div>
-                  <div class="product"><div class="product-image"></div><div class="product-copy"><b>Трековый светильник</b><span>Isonex · 4 850 ₽</span></div></div>
-                </div>
-              </div>
-            </div>
-            <div class="case-body">
-              <span class="case-kicker">Работающая система · Data pipeline</span>
-              <h3>Мониторинг каталогов поставщиков</h3>
-              <p>Система собирает товары с сайтов, находит новинки, отслеживает наличие и готовит материалы для публикации.</p>
-              <ul class="case-list">
-                <li>13 703 товара в SQLite-каталоге</li>
-                <li>Поиск, фильтры, бренды, цены и наличие</li>
-                <li>AI-тексты, изображения и публикация</li>
-                <li>Локальная панель и публичная витрина</li>
-              </ul>
-              <div class="tags"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Web scraping</span><span class="tag">LLM API</span><span class="tag">VK / Telegram</span></div>
-              <a class="case-link" href="https://dmitrisaev888-creator.github.io/lustra-parser/" target="_blank" rel="noopener noreferrer">Открыть публичную витрину ↗</a>
-            </div>
+      <div class="wrap">
+        <div class="section-head" data-reveal><div><span class="eyebrow">Выбранные проекты</span><h2 class="section-title">Инструменты для реальных задач</h2></div><p class="section-lead">Показываю сами интерфейсы и точно обозначаю статус: опубликованный продукт, внедрённая система или прототип с тестовыми данными.</p></div>
+        <div class="case-grid">
+          <article class="case-card" data-reveal>
+            <div class="case-image"><img src="assets/portfolio/catalog-lustra.png" alt="Снимок интерфейса каталога светильников с поиском, фильтрами и карточками товаров" width="1440" height="1100" loading="lazy"><span class="case-image-label">Публичная витрина</span></div>
+            <div class="case-body"><div class="case-meta"><span>Сбор и поиск данных</span><span class="case-status">Опубликован</span></div><h3>Каталог светильников</h3><p>Собрал товары поставщиков в витрину с поиском, фильтрами по брендам и источникам, ценой и наличием.</p><ul class="case-facts"><li>В каталоге на дату снимка — 561 позиция</li><li>Данные на сайте помечены датой обновления: 25 июня 2026</li></ul><a class="case-link" href="https://dmitrisaev888-creator.github.io/lustra-parser/" target="_blank" rel="noopener noreferrer">Открыть каталог <span aria-hidden="true">↗</span></a></div>
           </article>
-
-          <article class="case" data-reveal>
-            <div class="case-visual">
-              <div class="mock-window">
-                <div class="mock-top"><span class="mock-title">Редактор публикаций</span><span>модерация включена</span></div>
-                <div class="post-list">
-                  <div class="post-sidebar"><b>Материалы</b><div class="side-line active"></div><div class="side-line"></div><div class="side-line"></div><div class="side-line"></div></div>
-                  <div class="post-main">
-                    <div class="post-card"><div class="post-img"></div><div class="text-line"></div><div class="text-line"></div><div class="text-line short"></div><div class="post-actions"><span>Одобрить</span><span>Отклонить</span></div></div>
-                    <div class="post-card" style="margin-top:10px"><div class="text-line"></div><div class="text-line short"></div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="case-body">
-              <span class="case-kicker">Рабочий прототип · AI + редактор</span>
-              <h3>Контент-конвейер для VK</h3>
-              <p>Собирает материалы из RSS, отсеивает шум, оценивает темы, пишет черновики через GigaChat и передаёт их человеку на утверждение.</p>
-              <ul class="case-list">
-                <li>145 материалов в рабочей базе</li>
-                <li>Двухступенчатый скоринг экономит LLM-запросы</li>
-                <li>Веб-панель: правка, одобрение и очередь</li>
-                <li>Две публикации реально отправлены в VK</li>
-              </ul>
-              <div class="tags"><span class="tag">Python</span><span class="tag">GigaChat</span><span class="tag">RSS</span><span class="tag">Flask</span><span class="tag">VK API</span></div>
-            </div>
+          <article class="case-card" data-reveal>
+            <div class="case-image case-image--crm"><img src="assets/portfolio/parts-crm.png" alt="Снимок CRM для заявок на автозапчасти с Kanban-доской и скрытыми данными клиента" width="1440" height="1000" loading="lazy"><span class="case-image-label">Снимок CRM · контакты скрыты</span></div>
+            <div class="case-body"><div class="case-meta"><span>Бот и рабочая панель</span><span class="case-status">Развёрнут</span></div><h3>Заявки на автозапчасти</h3><p>Бот принимает запросы в мессенджере и передаёт их менеджеру в CRM, где заявку можно вести по этапам.</p><ul class="case-facts"><li>Сценарий сбора детали, VIN и контактов</li><li>Kanban для новых заявок, работы и готовых</li><li>На снимке одна заявка; VIN и имя клиента скрыты</li></ul><a class="case-link" href="https://t.me/avtozapchasti2026_bot" target="_blank" rel="noopener noreferrer">Посмотреть Telegram-бота <span aria-hidden="true">↗</span></a></div>
           </article>
-
-          <article class="case" data-reveal>
-            <div class="case-visual">
-              <div class="mock-window">
-                <div class="mock-top"><span class="mock-title">Активные проекты</span><span>Windows-приложение</span></div>
-                <div class="project-panel">
-                  <div class="project-summary"><div><b>Монтаж оборудования · проект №4</b><small>Сервисная компания · договор</small></div><span class="status-pill">В работе</span></div>
-                  <div class="stage-label">Этапы проекта</div>
-                  <div class="stage-row"><div class="stage done">Смета<br>готово</div><div class="stage done">Договор<br>готово</div><div class="stage">Закупка<br>в работе</div><div class="stage">Монтаж<br>новая</div></div>
-                  <div class="stage-label">Поставщики</div>
-                  <div class="supplier"><b>Поставщик 1</b><span>Кабель и крепёж</span><span>заказано</span></div>
-                  <div class="supplier"><b>Поставщик 2</b><span>Оборудование</span><span>ожидание</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="case-body">
-              <span class="case-kicker">Клиентский кейс · Уже используется</span>
-              <h3>От бумажного учёта к рабочей программе</h3>
-              <p>Для небольшой сервисной компании разработано приложение, в котором проекты, этапы, поставщики и архив находятся в одном месте.</p>
-              <ul class="case-list">
-                <li>Интерфейс прошёл несколько прототипов</li>
-                <li>Клиенты, договоры, этапы и поставщики</li>
-                <li>Архив и поиск по клиенту и датам</li>
-                <li>Локальное хранение без сложной инфраструктуры</li>
-              </ul>
-              <div class="tags"><span class="tag">Electron</span><span class="tag">JavaScript</span><span class="tag">Windows</span><span class="tag">UX-прототипирование</span></div>
-            </div>
+          <article class="case-card" data-reveal>
+            <div class="case-image"><img src="assets/portfolio/bankrot-lots.jpg" alt="Прототип поиска торговых лотов с категориями, фильтрами и карточками объектов" width="1274" height="670" loading="lazy"><span class="case-image-label">Прототип · тестовые лоты</span></div>
+            <div class="case-body"><div class="case-meta"><span>Поиск и личный кабинет</span><span class="case-status">Тестовая версия</span></div><h3>Поиск торговых лотов</h3><p>Прототип кабинета с фильтрами, карточками объектов, избранным и папками для сохранённых лотов.</p><ul class="case-facts"><li>Интерфейс поиска и страницы лота собраны</li><li>В показанной версии используются тестовые данные</li><li>Подключение реальных источников торгов ещё не завершено</li></ul></div>
+          </article>
+          <article class="case-card" data-reveal>
+            <div class="case-image case-image--ark"><img src="assets/portfolio/ai-arkestrator.png" alt="Локальный прототип AI-Arkestrator для разбора поручения о встрече и просмотра календаря" width="1440" height="1100" loading="lazy"><span class="case-image-label">Локальный MVP · демо</span></div>
+            <div class="case-body"><div class="case-meta"><span>Секретарь встреч</span><span class="case-status">Локальный прототип</span></div><h3>AI-Arkestrator</h3><p>Проверил цикл от обычного текстового поручения до предложения времени, согласования и записи события в демонстрационный календарь.</p><ul class="case-facts"><li>Отрабатывает доменную логику и журнал встреч</li><li>Календарь демонстрационный; внешних подключений нет</li><li>Сообщения через Telegram пока не отправляются</li></ul></div>
           </article>
         </div>
+
+        <div class="more-work" data-reveal><h3 class="more-title">Другие проекты из мастерской</h3><div class="more-grid">
+          <article class="more-item"><strong>Контент-конвейер для VK</strong><p>RSS → фильтрация и оценка → черновик через GigaChat → подтверждение редактором. В заметке от 22.07.2026: 145 материалов и две публикации.</p></article>
+          <article class="more-item"><strong>Учёт проектов для монтажной компании</strong><p>Windows-приложение для этапов, поставщиков, архива и поиска по проектам. В портфолио проекта отмечено как используемое клиентом.</p></article>
+          <article class="more-item"><strong>Razbirator · учёт авторазбора</strong><p>Внутренний MVP для доноров и запчастей: резерв, продажа, списание и журнал изменений. Не публичный каталог.</p></article>
+          <article class="more-item"><strong>Аналитика спроса на автозапчасти</strong><p>Локальный read-only сбор диалогов и извлечение запросов с выгрузкой для дальнейшей работы; не публичный сервис.</p></article>
+          <article class="more-item"><strong>Рабочее пространство SMILES Beauty</strong><p>Административный веб-инструмент для выручки, финансов, смен, лидов и отчётов.</p></article>
+        </div></div>
       </div>
     </section>
 
-    <section class="section" id="services">
-      <div class="shell">
-        <div class="section-head" data-reveal>
-          <div><span class="eyebrow">Направления</span><h2>С какой задачей ко мне обратиться</h2></div>
-          <p class="section-lead">Выберите знакомую ситуацию. Для первого шага не нужно готовое техническое задание: достаточно описать, как работа устроена сейчас.</p>
-        </div>
-        <div class="services-grid">
-          <article class="service" data-reveal><span class="service-num">01 / Данные</span><h3>Каталоги и цены приходится сверять вручную</h3><p>Настрою сбор товаров, цен, наличия и новинок с нужных источников. Данные можно вывести в поиск, Excel, уведомления или рабочую панель.</p><div class="service-foot"><span class="service-outcome">Результат: актуальные данные в одном месте</span>Пилот на одном источнике — от 20 000 ₽</div></article>
-          <article class="service" data-reveal><span class="service-num">02 / Контент</span><h3>На поиск тем и публикации уходит много времени</h3><p>Соберу конвейер для отбора тем, подготовки черновиков и очереди публикаций. Решение о выпуске остаётся за редактором.</p><div class="service-foot"><span class="service-outcome">Результат: готовые материалы на проверку</span>Пилот для одной площадки — от 25 000 ₽</div></article>
-          <article class="service" data-reveal><span class="service-num">03 / Процессы</span><h3>Заказы и этапы разбросаны по файлам и чатам</h3><p>Сделаю простую программу или веб-панель под ваш порядок работы: проекты, документы, поставщики, статусы и архив.</p><div class="service-foot"><span class="service-outcome">Результат: единое рабочее пространство</span>Ограниченный пилот — от 25 000 ₽</div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="shell">
-        <div class="section-head" data-reveal>
-          <div><span class="eyebrow">Как работаю</span><h2>От первого сообщения до рабочего инструмента</h2></div>
-          <p class="section-lead">Начинаем с одной конкретной операции. Согласуем, что должна делать первая версия и как поймём, что она полезна.</p>
-        </div>
-        <div class="process" data-reveal>
-          <article class="step"><h3>Разбираем задачу</h3><p>До 20 минут: что делается вручную, кто участвует и где возникает потеря времени.</p></article>
-          <article class="step"><h3>Фиксируем пилот</h3><p>Определяем один измеримый результат, входные данные, ограничения, срок и стоимость.</p></article>
-          <article class="step"><h3>Показываю прототип</h3><p>Сначала рабочая логика на тестовых данных, затем короткая итерация по обратной связи.</p></article>
-          <article class="step"><h3>Внедряем и проверяем</h3><p>Передача, проверка согласованных сценариев и отдельные условия дальнейшей поддержки.</p></article>
-        </div>
-        <div class="process-cta" data-reveal>
-          <div>
-            <strong>Не знаете, с чего начать?</strong>
-            <p>Напишите, какую задачу повторяете вручную и где сейчас хранятся данные. Этого хватит, чтобы начать разговор.</p>
-          </div>
-          <a class="button primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Описать задачу в Telegram <span aria-hidden="true">↗</span></a>
+    <section class="section services" id="services">
+      <div class="wrap">
+        <div class="section-head" data-reveal><div><span class="eyebrow">С чем помочь</span><h2 class="section-title">Похожая задача у вас?</h2></div><p class="section-lead">Начинаем с процесса, а не с выбора технологии. Сначала выясним, что повторяется, где теряются данные и какой результат нужен команде.</p></div>
+        <div class="service-grid">
+          <article class="service" data-reveal><span class="service-num">01 / ДАННЫЕ</span><h3>Усталость от ручного сбора и сверки</h3><p>Соберу источники в каталог, выгрузку или панель с нужным поиском и фильтрами.</p></article>
+          <article class="service" data-reveal><span class="service-num">02 / ЗАЯВКИ</span><h3>Запросы теряются между чатами</h3><p>Настрою бота и рабочий экран, чтобы информация попадала в один понятный процесс.</p></article>
+          <article class="service" data-reveal><span class="service-num">03 / УЧЁТ</span><h3>Таблиц стало слишком много</h3><p>Разработаю небольшое внутреннее приложение под ваши статусы, роли, документы и архив.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="shell about-grid">
-        <div class="portrait-card" data-reveal><img src="avatar-hd.jpg" alt="Дмитрий Исаев" width="1003" height="1254"></div>
-        <div class="about-copy" data-reveal>
-          <span class="eyebrow">Обо мне</span>
-          <h2>Понимаю процессы не только со стороны кода</h2>
-          <p>Меня зовут Дмитрий Исаев. Я работаю с реальными операциями склада и производства, поэтому смотрю на автоматизацию глазами человека, которому потом пользоваться системой каждый день. Собираю решения на Python и JavaScript, подключаю API и ИИ там, где они дают практический результат.</p>
-          <div class="skills" aria-label="Технологии"><span>Python</span><span>JavaScript</span><span>Electron</span><span>Telegram / aiogram</span><span>REST API</span><span>SQLite</span><span>Flask</span><span>LLM</span><span>Web scraping</span><span>Git</span></div>
+    <section class="section process" id="process">
+      <div class="wrap">
+        <div class="section-head" data-reveal><div><span class="eyebrow">Понятные этапы</span><h2 class="section-title">От описания проблемы к рабочему решению</h2></div><p class="section-lead">Фиксируем объём первой версии и показываем рабочую логику до масштабирования.</p></div>
+        <div class="steps" data-reveal>
+          <article class="step"><span class="step-number">01</span><h3>Разбираем задачу</h3><p>Что делается вручную, кто участвует и где возникают ошибки или задержки.</p></article>
+          <article class="step"><span class="step-number">02</span><h3>Выбираем пилот</h3><p>Определяем результат, необходимые данные, ограничения и критерии готовности.</p></article>
+          <article class="step"><span class="step-number">03</span><h3>Проверяем прототип</h3><p>Тестируем сценарий на согласованных примерах и собираем обратную связь.</p></article>
+          <article class="step"><span class="step-number">04</span><h3>Передаём в работу</h3><p>Проверяем согласованные сценарии и обсуждаем дальнейшую поддержку.</p></article>
         </div>
+        <div class="process-cta" data-reveal><div><strong>Можно начать с простого сообщения</strong><p>«Сейчас мы вручную делаем… Хотим, чтобы…» — этого достаточно для первого разговора.</p></div><a class="button primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Написать в Telegram <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="shell">
-        <div class="contact-card" data-reveal>
-          <div>
-            <h2>Расскажите, что отнимает время каждый день</h2>
-            <p>За короткий разговор определим, имеет ли смысл автоматизация. Если да — предложу границы первого пилота.</p>
-            <p class="contact-hint">Можно начать так: «Мы вручную переносим данные из… в… и хотим получать…»</p>
-          </div>
-          <div class="contact-actions">
-            <a class="button dark" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>
-            <a class="button" href="mailto:dmitrisaev@yandex.ru">dmitrisaev@yandex.ru</a>
-            <button class="button" type="button" id="max-btn" data-phone="+79081606836">Скопировать номер для MAX</button>
-          </div>
-        </div>
+    <section class="section about" id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo" data-reveal><img src="avatar-hd.jpg" alt="Дмитрий Исаев" width="1003" height="1254" loading="lazy"></div>
+        <div class="about-copy" data-reveal><span class="eyebrow">Обо мне</span><h2>Сначала понять работу. Потом автоматизировать.</h2><p>Я Дмитрий Исаев. Работаю с операциями склада и производства, поэтому при проектировании думаю и о человеке, который будет пользоваться системой каждый день. Создаю решения на Python и JavaScript, подключаю API и языковые модели, когда они дают практический результат.</p><div class="skills" aria-label="Технологии"><span>Python</span><span>JavaScript</span><span>Electron</span><span>Telegram</span><span>REST API</span><span>SQLite</span><span>PostgreSQL</span><span>Flask</span><span>LLM</span></div></div>
       </div>
     </section>
+
+    <section class="contact" id="contact"><div class="wrap"><div class="contact-card" data-reveal><div><span class="eyebrow">Обсудить задачу</span><h2>Что в вашей работе повторяется каждый день?</h2><p>Опишите операцию, которую хочется упростить. Вместе поймём, поможет ли здесь автоматизация и с какого небольшого шага лучше начать.</p></div><div class="contact-actions"><a class="button primary" href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Написать в Telegram <span aria-hidden="true">↗</span></a><a class="button" href="mailto:dmitrisaev@yandex.ru">dmitrisaev@yandex.ru</a><button class="button" type="button" id="max-btn" data-phone="+79081606836">Скопировать номер для MAX</button></div></div></div></section>
   </main>
-
-  <footer>
-    <div class="shell footer-inner">
-      <p>© <span id="year"></span> Дмитрий Исаев · AI-Isaev</p>
-      <div class="footer-links"><a href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.youtube.com/@iiidalll" target="_blank" rel="noopener noreferrer">YouTube</a></div>
-    </div>
-  </footer>
-
+  <footer><div class="wrap footer-inner"><p>© <span id="year"></span> Дмитрий Исаев</p><div class="footer-links"><a href="https://t.me/IIIdalll" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.youtube.com/@iiidalll" target="_blank" rel="noopener noreferrer">YouTube</a></div></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const revealItems = document.querySelectorAll("[data-reveal]");
-    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      revealItems.forEach((item) => observer.observe(item));
-    } else {
-      revealItems.forEach((item) => item.classList.add("visible"));
-    }
-
-    const toast = document.getElementById("toast");
-    let toastTimer;
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
-    }
-
-    const maxButton = document.getElementById("max-btn");
-    maxButton.addEventListener("click", async () => {
-      const phone = maxButton.dataset.phone;
-      try {
-        await navigator.clipboard.writeText(phone);
-        showToast("Номер скопирован: " + phone);
-      } catch {
-        window.location.href = "tel:" + phone;
-      }
-    });
+    document.documentElement.classList.add("js");
+    document.getElementById("year").textContent=new Date().getFullYear();
+    const items=document.querySelectorAll("[data-reveal]");
+    if("IntersectionObserver" in window&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.1});items.forEach(item=>observer.observe(item))}else{items.forEach(item=>item.classList.add("visible"))}
+    const toast=document.getElementById("toast");let toastTimer;
+    document.getElementById("max-btn").addEventListener("click",async event=>{const phone=event.currentTarget.dataset.phone;try{await navigator.clipboard.writeText(phone);toast.textContent="Номер скопирован: "+phone;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),2500)}catch{window.location.href="tel:"+phone}});
   </script>
 </body>
 </html>
